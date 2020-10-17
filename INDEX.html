@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>rocket</title>
+		<link rel="stylesheet" href="app.css">
+	</head>
+
+    <body>
+	<div class="container">
+		<div class="rocket">
+			<img src="./rocket.jpg" alt="">
+		</div>
+	</div>
+	
+	<script>
+	/*光线*//*随机函数*/
+	function rand(m,n){
+		return Math.ceil(Math.random() * (n-m+1)) + m-1;
+	}
+	let num = 40;/*光线总数*/
+	for(let i=0;i<num;i++){
+		const i = document.createElement('i')
+		i.style.height = rand(30,100) + 'px';
+		i.style.left = rand(1,99) + 'vw';
+		i.style.animationDuration = rand(5,30) / 10 + 's';//0.5 3
+		document.querySelector('.container').appendChild(i);//插入
+	}
+	</script>
+    </body>
+</html>
